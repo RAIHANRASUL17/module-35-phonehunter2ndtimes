@@ -109,8 +109,19 @@ const phoneDetails = idWithMOdal =>{
 }
 
 const displayPhoneDetails =(datas) =>{
-    console.log(datas)
-
+    console.log(datas.mainFeatures.sensors[0, 1, 2])
+    // modal part 
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML=`
+    <img class='text-center' src="${datas.image}" alt="">
+    <div>
+    <h4>brand:${datas.name}</h4>
+    <h4>storage:${datas.mainFeatures.storage}</h4>
+    
+    <h4>sensor: ${datas.mainFeatures.sensors[0]}</h4>
+    <h4></h4>
+    </div>
+    `;
 } 
 /*__________________ phoneDetails arrow function start___________*/ 
 
