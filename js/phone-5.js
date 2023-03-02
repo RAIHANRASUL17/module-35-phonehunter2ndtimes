@@ -18,7 +18,7 @@ parent.innerHTML ='';
 // datas= datas.slice(0, 3);
 /*____________ show-all section start ________________*/ 
 const showAll= document.getElementById('show-all')
-if(dataLimit && datas.length > 10){
+if(dataLimit && datas.length > 3){
     datas= datas.slice(0, 3);
     showAll.classList.remove('d-none')
 }
@@ -38,7 +38,7 @@ else{
 
 // display all phones
     datas.forEach (singleData=>{
-        console.log(singleData.phone_name)
+        // console.log(singleData)
 
         // step-2
         const phoneDiv= document.createElement('div')
@@ -51,6 +51,8 @@ else{
             <h5 class="card-title">Model:${singleData.phone_name}</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in
                 to additional content. This content is a little bit longer.</p>
+            
+            <button onclick="phoneDetails('${singleData.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Phone Details</button>
         </div>
     </div>
         `;
@@ -71,18 +73,10 @@ const searchProcess = (dataLimit) =>{
 /*_________________common function end______________*/ 
 //click btn-search and phone search part
 document.getElementById('btn-search').addEventListener('click', function(){
-// // start loader-spinner
-//     toggleSpiner(true);
-
-//     const searchField= document.getElementById('search-field');
-//     const searchText= searchField.value;
-//   // call loadPhones()
-//    loadPhones(searchText)
-
-/* do move searchProcess (common) function*/ 
+/*move to searchProcess (common) function*/ 
 
 // call searchProcess
-searchProcess(10);
+searchProcess(3);
 });
 
 /*_____________________ loader-spinner section start _____________________*/ 
@@ -98,19 +92,27 @@ const toggleSpiner = isLoading =>{
 /*__________________loader-spinner section end _______________*/ 
 /*_________________ btn-show-all section start _______________*/
 document.getElementById('btn-show-all').addEventListener('click', function(){
-//     toggleSpiner(true);
-//     const searchField= document.getElementById('search-field');
-//     const searchText= searchField.value;
-//   // call loadPhones()
-//    loadPhones(searchText)
-
-/* do move searchProcess (common) function*/ 
-
+/*move to searchProcess (common) function*/ 
 // call searchProcess
 searchProcess()
 })
-/*_________________ btn-show-all section end _________________*/ 
+/*_________________ btn-show-all section end _____________*/ 
+
+/*__________________ phoneDetails arrow function start___________*/ 
+const phoneDetails = idWithMOdal =>{
+  const url= `https://openapi.programming-hero.com/api/phone/${idWithMOdal}`
+ fetch(url)
+ .then(res => res.json())
+ .then(data => 
+    // call displayPhoneDetails
+    {displayPhoneDetails(data.data)})
+}
+
+const displayPhoneDetails =(datas) =>{
+    console.log(datas)
+} 
+/*__________________ phoneDetails arrow function start___________*/ 
 
 
 // call function
-// loadPhones('iphone')
+loadPhones('iphone')
