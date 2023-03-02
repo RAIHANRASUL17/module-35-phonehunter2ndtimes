@@ -14,8 +14,18 @@ const displayLoadPhones = (datas)=>{
 //   step-1
 const parent= document.getElementById('phone-container')
 parent.innerHTML ='';
-// display 3 phones
-datas= datas.slice(0, 3);
+// // display 3 phones
+// datas= datas.slice(0, 3);
+/*____________ show all btn section start ________________*/ 
+const showAll= document.getElementById('show-all')
+if(datas.length > 10){
+    datas= datas.slice(0, 3);
+    showAll.classList.remove('d-none')
+}
+else{
+    showAll.classList.add('d-none')
+}
+/*____________ show all btn section start ________________*/ 
 /*______________ No phone section start _________________*/ 
 const noPhone= document.getElementById('no-phone-message')
 if(datas.length === 0){
@@ -75,4 +85,4 @@ const toggleSpiner = isLoading =>{
 
 
 // call function
-loadPhones('iphone')
+// loadPhones('iphone')
