@@ -109,7 +109,7 @@ const phoneDetails = idWithMOdal =>{
 }
 
 const displayPhoneDetails =(datas) =>{
-    console.log(datas.mainFeatures.sensors[0, 1, 2])
+    console.log(datas.mainFeatures.sensors[0])
     // modal part 
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML=`
@@ -122,6 +122,10 @@ const displayPhoneDetails =(datas) =>{
     <h4></h4>
     </div>
     `;
+    /*__________ innerText set start________*/ 
+    const exampleModalLabelPart= document.getElementById('exampleModalLabel')
+    exampleModalLabelPart.innerText= datas.brand;
+    /*__________ innerText End________*/ 
 } 
 /*__________________ phoneDetails arrow function start___________*/ 
 
